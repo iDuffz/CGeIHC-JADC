@@ -1,5 +1,5 @@
 # CGeIHC-JADC
-CGeIHC - Practicas de Jesus Abner Dominguez Chavez
+CGeIHC - Practicas y Ejercicios de Jesus Abner Dominguez Chavez
 
 UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO
 
