@@ -86,17 +86,110 @@ void CrearTriangulo() //lienzo de dibujo de -1 a 1 en x,y
 		-0.925f,-0.3f,0.0f,
 		
 		//LETRA A
-		-0.3f,-0.7f,0.0f,
-		-0.225f,0.8f,0.0f,
-		-0.15f,-0.7f,0.0f,
+		-0.25f,-0.7f,0.0f,
+		-0.175f,0.8f,0.0f,
+		-0.1f,-0.7f,0.0f,
 
-		-0.225f,0.8f,0.0f,
-		-0.3f,-0.7f,0.0f,
-		-0.3f,0.8f,0.0f,
+		-0.175f,0.8f,0.0f,
+		-0.25f,-0.7f,0.0f,
+		-0.25f,0.8f,0.0f,
 
-		-0.15f,0.8f,0.0f,
-		-0.15f,-0.7f,0.0f,
-		-0.225f,0.8f,0.0f
+		-0.1f,0.8f,0.0f,
+		-0.1f,-0.7f,0.0f,
+		-0.175f,0.8f,0.0f,
+
+		//
+		-0.1f,0.5f,0.0f,
+		0.05f,0.8f,0.0,
+		0.2f,0.5f,0.0f,
+
+		-0.1f,0.5f,0.0f,
+		0.05f,0.8f,0.0f,
+		-0.1f,0.8f,0.0f,
+
+		0.05f,0.8f,0.0,
+		0.2f,0.8f,0.0f,
+		0.2f,0.5f,0.0f,
+
+		//
+		0.2f,-0.7f,0.0f,
+		0.275f,0.8f,0.0f,
+		0.35f,-0.7f,0.0f,
+
+		0.275f,0.8f,0.0f,
+		0.2f,-0.7f,0.0f,
+		0.2f,0.8f,0.0f,
+
+		0.275f,0.8f,0.0f,
+		0.35f,-0.7f,0.0f,
+		0.35f,0.8f,0.0f,
+
+		//
+		-0.1f,-0.1f,0.0f,
+		0.05f,0.2f,0.0f,
+		0.2f,-0.1f,0.0f,
+
+		-0.1f,-0.1f,0.0f,
+		0.05f,0.2f,0.0f,
+		-0.1f,0.2f,0.0f,
+
+		0.05f,0.2f,0.0f,
+		0.2f,-0.1f,0.0f,
+		0.2f,0.2f,0.0f,
+
+
+		//LETRA D
+		0.45f, -0.7f, 0.0f,
+		0.525f, 0.8f, 0.0f,
+		0.6f, -0.7f, 0.0f,
+
+		0.525f, 0.8f, 0.0f,
+		0.45f, -0.7f, 0.0f,
+		0.45f, 0.8f, 0.0f,
+
+		0.6f, 0.8f, 0.0f,
+		0.6f, -0.7f, 0.0f,
+		0.525f, 0.8f, 0.0f,
+
+		//
+		0.6f,0.5f,0.0f,
+		0.725f,0.8f,0.0f,
+		0.85f,0.5f,0.0f,
+
+		0.6f, 0.5f, 0.0f,
+		0.6f, 0.8f,0.0f,
+		0.725f,0.8f,0.0f,
+		
+		0.725f,0.8f,0.0f,
+		0.85f,0.8f,0.0f,
+		0.85f,0.5f,0.0f,
+
+		//
+		0.85f,-0.4f,0.0f,
+		0.925f,0.5f,0.0f,
+		1.0f,-0.4f,0.0f,
+
+		0.85f,-0.4f,0.0f,
+		0.85f,0.5f,0.0f,
+		0.925f,0.5f,0.0f,
+
+		0.925f,0.5f,0.0f,
+		1.0f,0.5f,0.0f,
+		1.0f,-0.4f,0.0f,
+
+		//
+		0.6f,-0.7f,0.0f,
+		0.725f,-0.4f,0.0f,
+		0.85f,-0.7f,0.0f,
+
+		0.6f,-0.7f, 0.0f,
+		0.6f,-0.4f,0.0f,
+		0.725f,-0.4f,0.0f,
+		
+		0.725f,-0.4f,0.0f,
+		0.85f,-0.4f,0.0f,
+		0.85f,-0.7f,0.0f,
+
 
 	};
 	glGenVertexArrays(1, &VAO); //generar 1 VAO
@@ -232,21 +325,21 @@ int main()
 			verde = (float)(rand() % 2);
 			azul = (float)(rand() % 2);
 			cont++;
-			Sleep(1000);
+			Sleep(2000);
 		}
 		else if (cont == 1){
 			rojo = (float)(rand() % 2);
 			verde = (float)(rand() % 2);
 			azul = (float)(rand() % 2);
 			cont++;
-			Sleep(1000);
+			Sleep(2000);
 		}
 		else if (cont == 2){
 			rojo = (float)(rand() % 2);
 			verde = (float)(rand() % 2);
 			azul = (float)(rand() % 2);
 			cont = 0;
-			Sleep(1000);
+			Sleep(2000);
 		}
 		//Recibir eventos del usuario
 		glfwPollEvents();
@@ -259,7 +352,7 @@ int main()
 		glUseProgram(shader);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,100); //vertices necesarios pueden ser (triangles, lines, points)
+		glDrawArrays(GL_TRIANGLES,0,108); //vertices necesarios pueden ser (triangles, lines, points)
 		glBindVertexArray(0);
 
 		glUseProgram(0);
