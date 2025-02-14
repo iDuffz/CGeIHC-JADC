@@ -33,30 +33,70 @@ void CrearTriangulo() //lienzo de dibujo de -1 a 1 en x,y
 {
 	GLfloat vertices[] = {
 
-		//cuadrado
-		0.0f,0.5f,0.0f,
-		-0.8f,0.5f,0.0f,
-		-0.8f,-0.5f,0.0f,
+		//LETRA J
+		-0.85f,0.8f,0.0f,
+		-0.4f,0.65f,0.0f,
+		-0.85f,0.5f,0.0f,
 
-		0.0f,0.5f,0.0f,
-		0.0f,-0.5f,0.0f,
-		-0.8f,-0.5f,0.0f,
+		-0.4f,0.65f,0.0f,
+		-0.85f,0.8f,0.0f,
+		-0.4f,0.8f,0.0f,
+
+		-0.4f,0.5f,0.0f,
+		-0.85f,0.5f,0.0f,
+		-0.4f,0.65f,0.0f,
+
+		//
+		-0.7f,-0.5f,0.0f,
+		-0.625f,0.5f,0.0f,
+		-0.55f,-0.5f,0.0f,
+
+		-0.625f,0.5f,0.0f,
+		-0.7f,-0.5f,0.0f,
+		-0.7f,0.5f,0.0f,
+
+		-0.55f,0.5f,0.0f,
+		-0.55f,-0.5f,0.0f,
+		-0.625f,0.5f,0.0f,
+
+		//
+		-1.0f,-0.5f,0.0f,
+		-0.55f,-0.6f,0.0f,
+		-1.0f,-0.7f,0.0f,
+
+		-0.55f,-0.6f,0.0f,
+		-1.0f,-0.5f,0.0f,
+		-0.55f,-0.5f,0.0f,
+
+		-0.55f,-0.7f,0.0f,
+		-1.0f,-0.7f,0.0f,
+		-0.55f,-0.6f,0.0f,
+
+		//
+		-1.0f,-0.5f,0.0f,
+		-0.925f,-0.3f,0.0f,
+		-0.85f,-0.5f,0.0f,
+
+		-0.925f,-0.3f,0.0f,
+		-1.0f,-0.5f,0.0f,
+		-1.0f,-0.3f,0.0f,
+
+		-0.85f,-0.3f,0.0f,
+		-0.85f,-0.5f,0.0f,
+		-0.925f,-0.3f,0.0f,
 		
-		//rombo
-		0.5f,0.5f,0.0f,
-		0.1f,0.0f,0.0f,
-		0.5f,-0.5f,0.0f,
+		//LETRA A
+		-0.3f,-0.7f,0.0f,
+		-0.225f,0.8f,0.0f,
+		-0.15f,-0.7f,0.0f,
 
-		0.5f,0.5f,0.0f,
-		0.9f,0.0f,0.0f,
-		0.5f,-0.5f,0.0f
+		-0.225f,0.8f,0.0f,
+		-0.3f,-0.7f,0.0f,
+		-0.3f,0.8f,0.0f,
 
-		/*-1.0f, -1.0f,0.0f, x,y,z
-		1.0f,-1.0f, 0.0f,
-		0.0f,1.0f,0.0f,
-		-1.0f,1.0f,0.0f,
-		-1.0f, -1.0f,0.0f,
-		0.0f,1.0f,0.0f*/
+		-0.15f,0.8f,0.0f,
+		-0.15f,-0.7f,0.0f,
+		-0.225f,0.8f,0.0f
 
 	};
 	glGenVertexArrays(1, &VAO); //generar 1 VAO
@@ -188,23 +228,23 @@ int main()
 	{
 		//cambio de color de fondo de pantalla
 		if (cont == 0){
-			rojo = 1.0f;
-			verde = 0.0f;
-			azul = 0.0f;
+			rojo = (float)(rand() % 2);
+			verde = (float)(rand() % 2);
+			azul = (float)(rand() % 2);
 			cont++;
 			Sleep(1000);
 		}
 		else if (cont == 1){
-			rojo = 0.0f;
-			verde = 1.0f;
-			azul = 0.0f;
+			rojo = (float)(rand() % 2);
+			verde = (float)(rand() % 2);
+			azul = (float)(rand() % 2);
 			cont++;
 			Sleep(1000);
 		}
 		else if (cont == 2){
-			rojo = 0.0f;
-			verde = 0.0f;
-			azul = 1.0f;
+			rojo = (float)(rand() % 2);
+			verde = (float)(rand() % 2);
+			azul = (float)(rand() % 2);
 			cont = 0;
 			Sleep(1000);
 		}
@@ -213,13 +253,13 @@ int main()
 
 		//Limpiar la ventana
 		//BUSCAR funcion de random para cambiar el color del fondo de forma ciclica
-		glClearColor(rojo,verde,azul,1.0f); //color del fondo
+		glClearColor(rojo,verde, azul, 1.0f); //color del fondo
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shader);
 
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES,0,12); //vertices necesarios pueden ser (triangles, lines, points)
+		glDrawArrays(GL_TRIANGLES,0,100); //vertices necesarios pueden ser (triangles, lines, points)
 		glBindVertexArray(0);
 
 		glUseProgram(0);
