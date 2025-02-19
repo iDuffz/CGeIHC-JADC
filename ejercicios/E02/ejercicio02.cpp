@@ -239,8 +239,8 @@ int main()
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
 	//Projection: Matriz de Dimensión 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
-	glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f); //left right top bottom near far. No tiene perspectiva
-	//glm::mat4 projection = glm::perspective(glm::radians(45.0f)	,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f); //Rango de apertura de 60 rad (Angulo de vision del ojo)
+	//glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f); //left right top bottom near far. No tiene perspectiva
+	glm::mat4 projection = glm::perspective(glm::radians(45.0f)	,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f); //Rango de apertura de 60 rad (Angulo de vision del ojo)
 	
 	//Model: Matriz de Dimensión 4x4 en la cual se almacena la multiplicación de las transformaciones geométricas.
 	glm::mat4 model(1.0); //fuera del while se usa para inicializar la matriz con una identidad
@@ -261,87 +261,12 @@ int main()
 		uniformProjection = shaderList[1].getProjectLocation();
 		
 		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
-		// 
-		//--------LLAMANDO A TRIANGULO AZUL--------
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.5f, -1.0f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.5f, 0.25f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[0]->RenderMeshColor();
-
-		//--------LLAMANDO A CUADRADO ROJO--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -0.2f, -1.0f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.8f, 0.9f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[2]->RenderMeshColor();
-
-		//--------LLAMANDO A PUERTA CUADRADA VERDE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[3]->RenderMeshColor();
-
-		//--------LLAMANDO A VENTANA1 CUADRADA VERDE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-0.2f, 0.0f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[3]->RenderMeshColor();
-
-		//--------LLAMANDO A VENTANA2 CUADRADA VERDE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.2f, 0.0f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[3]->RenderMeshColor();
-
-		//--------LLAMANDO A TRONCO1 CUADRADO CAFE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-0.7f, -0.55f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.5f)); //Escalación a su tamaño 
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -4.0f)); //Traslacion inicial para que se vean los vértices
 		//
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshColorList[4]->RenderMeshColor();
-
-		//--------LLAMANDO A TRONCO2 CUADRADO CAFE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.7f, -0.55f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[4]->RenderMeshColor();
-
-		//--------LLAMANDO A ARBOL1 TRIANGULO VERDE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-0.7f, -0.225f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.2f, 0.225f, 0.5f)); //Escalación a su tamaño
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[1]->RenderMeshColor();
-
-		//--------LLAMANDO A ARBOL2 TRIANGULO VERDE--------
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.7f, -0.225f, -0.9f)); //Traslacion inicial para que se vean los vértices
-		model = glm::scale(model, glm::vec3(0.2f, 0.225f, 0.5f)); //Escalación a su tamaño 
-		//
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshColorList[1]->RenderMeshColor();
 
 		/* DIBUJOS 3D CON MESH
 		//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
