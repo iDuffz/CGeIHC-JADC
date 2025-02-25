@@ -293,7 +293,7 @@ int main()
 
 	CrearCubo();//índice 0 en MeshList
 	CrearPiramideTriangular();//índice 1 en MeshList
-	CrearCilindro(5, 1.0f);//índice 2 en MeshList
+	CrearCilindro(15, 1.0f);//índice 2 en MeshList
 	CrearCono(25, 2.0f);//índice 3 en MeshList
 	CrearPiramideCuadrangular();//índice 4 en MeshList
 	CreateShaders();
@@ -384,7 +384,7 @@ int main()
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
 		model = glm::translate(model, glm::vec3(0.0f, -0.5f, -3.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 0.1f, 5.0f));
+		model = glm::scale(model, glm::vec3(8.0f, 0.1f, 9.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[0]->RenderMesh();
@@ -416,7 +416,7 @@ int main()
 		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(1.5f, 2.5f, -2.3f));
+		model = glm::translate(model, glm::vec3(1.2f, 2.5f, -2.3f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
@@ -426,7 +426,7 @@ int main()
 		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(1.5f, 2.5f, -3.7f));
+		model = glm::translate(model, glm::vec3(1.2f, 2.5f, -3.7f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
@@ -436,12 +436,84 @@ int main()
 		color = glm::vec3(0.0f, 1.0f, 0.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(1.5f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(1.2f, 0.0f, -3.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[0]->RenderMesh();
+
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.0f, 1.0f, 0.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.7f, 2.5f, -3.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 3.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshList[0]->RenderMesh();
 		
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.0f, 1.0f, 0.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-0.7f, 2.5f, -3.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 3.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[0]->RenderMesh();
+
+		//TRONCOS CAFES
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.478f, 0.255f, 0.067f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.35f, -6.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 1.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[2]->RenderMeshGeometry();
+
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.478f, 0.255f, 0.067f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.35f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 1.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[2]->RenderMeshGeometry();
+
+		//PINOS VERDES
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.0f, 0.5f, 0.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 1.3f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 1.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[3]->RenderMeshGeometry();
+
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.0f, 0.5f, 0.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 1.3f, -6.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 1.5f, 0.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshList[3]->RenderMeshGeometry();
+
+		//ESFERA AZUL
+		model = glm::mat4(1.0f);
+		color = glm::vec3(0.0f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-1.5f, 1.0f, -3.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
 
 		glUseProgram(0);
 		mainWindow.swapBuffers();
