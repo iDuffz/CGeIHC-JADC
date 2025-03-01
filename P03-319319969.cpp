@@ -84,17 +84,17 @@ void CrearCubo()
 	meshList.push_back(cubo);
 }
 
-// Pirámide triangular regular
+// Pirámide triangular
 void CrearPiramideTriangular()
 {
-	unsigned int indices_piramide_triangular0[] = {
+	unsigned int indices_piramide_triangular[] = {
 			0,1,2,
 			1,3,2,
 			3,0,2,
 			1,0,3
 
 	};
-	GLfloat vertices_piramide_triangular0[] = {
+	GLfloat vertices_piramide_triangular[] = {
 		-0.5f, -0.5f,0.0f,	//0
 		0.5f,-0.5f,0.0f,	//1
 		0.0f,0.5f, -0.25f,	//2
@@ -102,7 +102,7 @@ void CrearPiramideTriangular()
 
 	};
 	Mesh* obj1 = new Mesh();
-	obj1->CreateMesh(vertices_piramide_triangular0, indices_piramide_triangular0, 12, 12);
+	obj1->CreateMesh(vertices_piramide_triangular, indices_piramide_triangular, 12, 12);
 	meshList.push_back(obj1);
 
 
@@ -112,30 +112,58 @@ void CrearPiramideRubik()
 {
 
 	GLfloat vertices_piramide_triangular[] = {
+		
 		// Cara ROJA
-		-0.5f, -0.5f, 0.25f, 1.0f, 0.0f, 0.0f,  // Vértice base izquierdo
-		0.5f, -0.5f, 0.25f, 1.0f, 0.0f, 0.0f,   // Vértice base derecho
-		0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,     // Vértice superior (ligeramente desplazado)
+		-0.5f, -0.5f, 0.35f,	1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, 0.35f,		1.0f, 0.0f, 0.0f, 
+		0.0f, 0.5f, 0.1f,		1.0f, 0.0f, 0.0f,   
 
 		// Cara VERDE
-		0.55f, -0.5f, 0.2f, 0.0f, 0.7f, 0.0f,  // Vértice base derecho (desplazado)
-		0.05f, -0.5f, -0.6f, 0.0f, 0.7f, 0.0f,  // Vértice base trasero (desplazado)
-		0.0f, 0.5f, 0.0f, 0.0f, 0.7f, 0.0f,     // Vértice superior (desplazado)
+		0.6f, -0.5f, 0.15f,		0.0f, 0.7f, 0.0f,  
+		0.1f, -0.5f, -0.65f,	0.0f, 0.7f, 0.0f,  
+		0.1f, 0.5f, -0.1f,		0.0f, 0.7f, 0.0f,    
 
 		// Cara MORADA
-		-0.05f, -0.5f, -0.6f, 0.5f, 0.0f, 1.0f, // Vértice base trasero (desplazado)
-		-0.55f, -0.5f, 0.2f, 0.5f, 0.0f, 1.0f,  // Vértice base izquierdo (desplazado)
-		0.0f, 0.5f, 0.0f, 0.5f, 0.0f, 1.0f,    // Vértice superior (desplazado)
+		-0.1f, -0.5f, -0.65f,	0.5f, 0.0f, 1.0f, 
+		-0.6f, -0.5f, 0.15f,	0.5f, 0.0f, 1.0f,  
+		-0.1f, 0.5f, -0.1f,		0.5f, 0.0f, 1.0f,   
 
-		// Cara AMARILLA (base)
-		0.55f, -0.5f, 0.2f, 1.0f, 1.0f, 0.0f,   // Vértice base derecho (desplazado)
-		-0.55f, -0.5f, 0.2f, 1.0f, 1.0f, 0.0f, // Vértice base izquierdo (desplazado)
-		0.05f, -0.5f, -0.6f, 1.0f, 1.0f, 0.0f
+		// Cara AMARILLA
+		0.5f, -0.8f, 0.25f,		1.0f, 1.0f, 0.0f,   
+		-0.5f, -0.8f, 0.25f,	1.0f, 1.0f, 0.0f,
+		0.0f, -0.8f, -0.55f,	1.0f, 1.0f, 0.0f  
 
 	};
 	MeshColor* obj2 = new MeshColor();
 	obj2->CreateMeshColor(vertices_piramide_triangular, 72);
 	meshColorList.push_back(obj2);
+
+	GLfloat vertices_piramide_triangular1[] = {
+
+		// Cara ROJA (frente)
+		-0.5f, -0.25f, 0.2625f,    1.0f, 0.0f, 0.0f,
+		0.5f, -0.25f, 0.2625f,     1.0f, 0.0f, 0.0f,
+		0.0f, 0.75f, 0.0125f,      1.0f, 0.0f, 0.0f,
+
+		// Cara VERDE (derecha)
+		0.5f, -0.25f, 0.2625f,     0.0f, 0.7f, 0.0f,
+		0.0f, -0.25f, -0.5375f,    0.0f, 0.7f, 0.0f,
+		0.0f, 0.75f, 0.0125f,      0.0f, 0.7f, 0.0f,
+
+		// Cara MORADA (izquierda)
+		0.0f, -0.25f, -0.5375f,    0.5f, 0.0f, 1.0f,
+		-0.5f, -0.25f, 0.2625f,    0.5f, 0.0f, 1.0f,
+		0.0f, 0.75f, 0.0125f,      0.5f, 0.0f, 1.0f,
+
+		// Cara AMARILLA (base)
+		0.5f, -0.25f, 0.2625f,     1.0f, 1.0f, 0.0f,
+		-0.5f, -0.25f, 0.2625f,    1.0f, 1.0f, 0.0f,
+		0.0f, -0.25f, -0.5375f,    1.0f, 1.0f, 0.0f
+
+	};
+	MeshColor* obj3 = new MeshColor();
+	obj3->CreateMeshColor(vertices_piramide_triangular1, 72);
+	meshColorList.push_back(obj3);
 }
 /*
 Crear cilindro, cono y esferas con arreglos dinámicos vector creados en el Semestre 2023 - 1 : por Sánchez Pérez Omar Alejandro
@@ -325,11 +353,11 @@ int main()
 
 	CrearCubo();//índice 0 en MeshList
 	CrearPiramideTriangular();//índice 1 en MeshList
-	CrearCilindro(5, 1.0f);//índice 3 en MeshList
-	CrearCono(25, 2.0f);//índice 4 en MeshList
-	CrearPiramideCuadrangular();//índice 5 en MeshList
+	CrearCilindro(5, 1.0f);//índice 2 en MeshList
+	CrearCono(25, 2.0f);//índice 3 en MeshList
+	CrearPiramideCuadrangular();//índice 4 en MeshList
 	CreateShaders();
-	CrearPiramideRubik();
+	CrearPiramideRubik(); //indice 0 y 1 en meshColorList
 	
 	
 
@@ -417,218 +445,322 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[1]->RenderMesh();	
+		meshList[1]->RenderMesh();
 
-	
-		//CARA MORADA
 		//TOP
 		model = glm::mat4(1.0f);
 		//color = glm::vec3(0.5f, 0.0f, 1.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
 		model = glm::translate(model, glm::vec3(0.0f, 2.9f, -5.4f));
-		model = glm::scale(model, glm::vec3(4.3f, 4.3f, 4.3f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
 		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		meshColorList[0]->RenderMeshColor();
 
-		/*
-		//BOTTOM
+		//MIDI
 		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(3.6f, -3.3f, 0.2f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(4.0f, -3.8f, -1.42f));
-		model = glm::scale(model, glm::vec3(2.7f, 2.7f, 2.7f));
-		model = glm::rotate(model, 233 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(3.6f, -3.3f, -3.0f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		//model = glm::rotate(model, 2 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(4.0f, -3.8f, -4.6f));
-		model = glm::scale(model, glm::vec3(2.7f, 2.7f, 2.7f));
-		model = glm::rotate(model, 233 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(3.6f, -3.3f, -6.2f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		//model = glm::rotate(model, -2 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		//MID
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(2.0f, -0.3f, -4.6f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-0.0f, -0.2f, -7.2f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
 		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
 
+		//BOTI
 		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(2.4f, -0.75f, -3.0f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		model = glm::rotate(model, 233 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(2.0f, -0.3f, -1.4f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -3.2f, -8.8f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
 		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-		//
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//BOT MID 
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-1.5f, -3.2f, -6.5f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//MIDD
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-1.5f, -0.2f, -4.7f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//BOTD
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-3.0f, -3.2f, -4.0f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//MID (ROJO VERDE)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(1.5f, -0.2f, -4.7f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//BOT (ROJO VERDE)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(3.0f, -3.2f, -4.0f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//BOT MID VERDE
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(1.5f, -3.2f, -6.3f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//BOT MID ROJO
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -3.2f, -4.0f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//MID REVERSE (MORADO)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-0.7f, -0.3f, -6.1f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, -56 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 215 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
 		
-	//CARA AMARILLA
-		//TOP
+		//BOT REVERSE IZQ (MORADO)
 		model = glm::mat4(1.0f);
-		color = glm::vec3(1.0f, 1.0f, 0.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(0.5f, 2.9f, -3.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-0.75f, -3.3f, -7.7f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, -56 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 215 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//BOT REVERSE DER (MORADO)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-2.25f, -3.3f, -5.3f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, -56 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, -60 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 215 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//MID REVERSE (ROJO)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -0.2f, -4.7f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 30 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		//BOTTOM
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//BOT REVERSE IZQ (ROJO)
 		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(3.6f, -3.3f, 0.2f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		//model = glm::rotate(model, 2 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		//meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(4.0f, -3.8f, -1.42f));
-		model = glm::scale(model, glm::vec3(2.7f, 2.7f, 2.7f));
-		model = glm::rotate(model, 233 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(3.6f, -3.3f, -3.0f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		//model = glm::rotate(model, 2 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(4.0f, -3.8f, -4.6f));
-		model = glm::scale(model, glm::vec3(2.7f, 2.7f, 2.7f));
-		model = glm::rotate(model, 233 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(3.6f, -3.3f, -6.2f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		//model = glm::rotate(model, -2 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		//MID
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(2.0f, -0.3f, -4.6f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-1.5f, -3.3f, -3.9f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 30 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//BOT REVERSE DER (ROJO)
 		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
 		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(2.4f, -0.75f, -3.0f));
-		model = glm::scale(model, glm::vec3(2.8f, 2.8f, 2.8f));
-		model = glm::rotate(model, 233 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-
-		model = glm::mat4(1.0f);
-		color = glm::vec3(0.5f, 0.0f, 1.0f);
-		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		model = glm::translate(model, glm::vec3(2.0f, -0.3f, -1.4f));
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(1.5f, -3.3f, -3.8f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 30 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-		meshList[4]->RenderMesh();
-	
-	*/
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//MID REVERSE (VERDE)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.8f, -0.3f, -6.1f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 56 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 57 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 213 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+
+		//BOT REVERSE DER (VERDE)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(0.7f, -3.4f, -7.7f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 56 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 57 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 213 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//BOT REVERSE IZQ (VERDE)
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(2.3f, -3.4f, -5.35f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 56 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 57 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, 213 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//MID IZQ AMARILLO
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-0.0f, -3.2f, -7.3f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//MID DER AMARILLO
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(-1.5f, -3.2f, -4.9f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
+		//BOT AMARILLO
+		model = glm::mat4(1.0f);
+		//color = glm::vec3(0.5f, 0.0f, 1.0f);
+		//Opcional duplicar esta traslación inicial para posicionar en -Z a los objetos en el mismo punto
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
+		model = glm::translate(model, glm::vec3(1.5f, -3.2f, -4.8f));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, 0 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		meshColorList[0]->RenderMeshColor();
+		
 		glUseProgram(0);
 		mainWindow.swapBuffers();
 	}
