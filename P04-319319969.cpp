@@ -326,6 +326,7 @@ int main()
 
 	glm::mat4 model(1.0);//Inicializar matriz de Modelo 4x4
 	glm::mat4 modelaux(1.0);//Inicializar matriz de Modelo 4x4
+	glm::mat4 modelaux2(1.0);
 
 	glm::vec3 color = glm::vec3(0.0f,0.0f,0.0f); //inicializar Color para enviar a variable Uniform;
 
@@ -575,68 +576,294 @@ int main()
 		meshList[0]->RenderMesh(); //dibuja cubo y pirámide triangular
 		*/
 
+		
+		
 		//ARAÑA
 		//CUERPO
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 5.0f, -4.0f));
 		modelaux = model;
+		modelaux2 = model;
 		model = glm::scale(model, glm::vec3(3.0f, 5.0f, 3.0f));
 		color = glm::vec3(0.5f, 0.5f, 0.5f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
 
+		//CABEZA
+		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(8.0f, 5.0f, 8.0f));
+		color = glm::vec3(0.5f, 0.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sp.render();
+
+		//OJOS
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-0.5f, 0.2f, 0.5f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		color = glm::vec3(1.5f, 1.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sp.render();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.8f, 0.0f, 0.1f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+		color = glm::vec3(1.5f, 1.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sp.render();
+
+		modelaux = modelaux2; //para regresar a la matriz del cuerpo
+
 		//articulacion1 - brazo1
-		model = glm::translate(model, glm::vec3(1.0f, -0.3f, 0.0f));
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(2.4f, -1.0f, 2.0f));
 		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion1()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model; //auxiliar que sirve como punto de control 
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f)); //este scale no se guardará en la matriz
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
-		//se programe cambio entre proyección ortogonal y perspectiva
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);
+		color = glm::vec3(0.5f, 1.5f, 0.5f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		sp.render();
 
 		//brazo1.1
 		model = modelaux;
-		model = glm::rotate(model, glm::radians(125.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(0.0f, -0.55f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.75f, 1.25f, 0.0f));
 		modelaux = model;
-		model = glm::scale(model, glm::vec3(0.2f, 1.0f, 0.2f));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);
+		model = glm::rotate(model, glm::radians(125.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(0.5f, 1.5f, 0.5f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
 
 		//articulacion2 - brazo1
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(0.0f, -0.55f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.8f, 1.2f, 0.0f));
 		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion2()), glm::vec3(0.0f, 0.0f, 1.0f));
 		modelaux = model; //auxiliar que sirve como punto de control 
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f)); //este scale no se guardará en la matriz
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
-		//se programe cambio entre proyección ortogonal y perspectiva
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);
+		color = glm::vec3(0.5f, 1.5f, 0.5f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		sp.render();
 
 		//brazo1.2
 		model = modelaux;
-		model = glm::rotate(model, glm::radians(-125.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(0.0f, -0.6f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -2.2f, 0.0f));
 		modelaux = model;
-		model = glm::scale(model, glm::vec3(0.2f, 1.2f, 0.2f));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(0.5f, 1.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+		
+		modelaux = modelaux2; //para regresar a la matriz del cuerpo
+
+		//articulacion3 - brazo2.1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(2.0f, -1.0f, -2.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion3()), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(0.5f, 0.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//brazo2.1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(1.8f, 1.3f, 0.0f));
+		modelaux = model;
+		model = glm::rotate(model, glm::radians(125.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(0.5f, 0.5f, 1.5f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
 
+		//articulacion4 - brazo2.2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(1.8f, 1.2f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion4()), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(0.5f, 0.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//brazo2.2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, -2.2f, 0.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(0.5f, 0.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+
+		modelaux = modelaux2; //para regresar a la matriz del cuerpo
+
+		//articulacion5 - brazo3.1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-2.5f, -1.0f, -2.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion5()), glm::vec3(0.0f, 0.0f, -1.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(1.5f, 0.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//brazo3.1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.8f, 1.3f, 0.0f));
+		modelaux = model;
+		model = glm::rotate(model, glm::radians(-125.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(1.5f, 0.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+
+		//articulacion6 - brazo3.2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.8f, 1.3f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion6()), glm::vec3(0.0f, 0.0f, -1.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(1.5f, 0.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//brazo3.2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, -2.2f, 0.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(1.5f, 0.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+
+		modelaux = modelaux2; //para regresar a la matriz del cuerpo
+
+		//articulacion7 - brazo4.1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-2.3f, -1.0f, 2.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion7()), glm::vec3(0.0f, 0.0f, -1.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(1.5f, 1.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//brazo4.1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.8f, 1.3f, 0.0f));
+		modelaux = model;
+		model = glm::rotate(model, glm::radians(-125.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(1.5f, 1.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+
+		//articulacion8 - brazo4.2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.8f, 1.3f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion8()), glm::vec3(0.0f, 0.0f, -1.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(1.5f, 1.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//brazo4.2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.0f, -2.2f, 0.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.6f, 4.0f, 0.6f));
+		color = glm::vec3(1.5f, 1.5f, 0.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[2]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+
+		modelaux = modelaux2; //para regresar a la matriz del cuerpo
+
+		//articulacion9 - oreja1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(1.6f, 4.6f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion9()), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(1.5f, 1.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//oreja1
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(0.8f, 0.8f, 0.0f));
+		modelaux = model;
+		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 2.0f, 0.3f));
+		color = glm::vec3(1.5f, 1.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[3]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+
+		modelaux = modelaux2; //para regresar a la matriz del cuerpo
+
+		//articulacion9 - oreja2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-1.6f, 4.6f, 0.0f));
+		model = glm::rotate(model, glm::radians(mainWindow.getarticulacion10()), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelaux = model; //auxiliar que sirve como punto de control 
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f)); //este scale no se guardará en la matriz
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//la línea de proyección solo se manda una vez a menos que en tiempo de ejecución
+		//se programe cambio entre proyección ortogonal y perspectiva
+		color = glm::vec3(1.5f, 1.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		sp.render();
+
+		//oreja2
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-0.8f, 0.8f, 0.0f));
+		modelaux = model;
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 2.0f, 0.3f));
+		color = glm::vec3(1.5f, 1.5f, 1.5f);
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		meshList[3]->RenderMeshGeometry(); //dibuja cubo y pirámide triangular
+		
 
 		glUseProgram(0);
 		mainWindow.swapBuffers();
